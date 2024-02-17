@@ -1,7 +1,3 @@
-const _ = require("lodash");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-
 const { User } = require("../models/Users");
 
 module.exports.getAllUser = async (req, res, next) => {
