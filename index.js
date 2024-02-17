@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const winston = require("winston");
-const swaggerUi = require("swagger-ui-express");
 
 const userRouter = require("./routers/user");
 const { initializeLogger } = require("./utilities/logger");
@@ -26,12 +25,12 @@ if (process.env.Environment !== "production") {
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/api/users", userRouter);
 app.get("/", (req, res, next) => {
   return res.status(200).send({
     message: "Welcome to Baxture Assignment backend server",
   });
 });
-app.use("/api/users", userRouter);
 
 app.listen(process.env.PORT, async () => {
   await connect
