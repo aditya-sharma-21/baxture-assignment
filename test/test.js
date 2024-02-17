@@ -79,4 +79,16 @@ describe("/Baxture Assignment Test Cases", function () {
         done();
       });
   });
+
+  it("should delete user details", function (done) {
+    const id = "6002b5e0-cd67-11ee-bfb4-0bed357cee5b";
+    chai
+      .request(server)
+      .delete(`/api/users/${id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a("object");
+        done();
+      });
+  });
 });
